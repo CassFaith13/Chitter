@@ -1,4 +1,6 @@
+using Chitter.Models.Token;
 using Chitter.Models.User;
+using Chitter.Services.Token;
 using Chitter.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +11,12 @@ namespace Chitter.WebAPI.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _service;
-        public UserController(IUserService service)
+        private readonly IUserService _userService;
+        private readonly ITokenService _tokenService;
+        public UserController(IUserService userService, ITokenService tokenService)
         {
-            _service = service;
+            _userService = userService;
+            _tokenService = tokenService;
         }
 
         [HttpPost("Register Chitter User")]
@@ -23,7 +27,7 @@ namespace Chitter.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var registerResult = await _service.RegisterUserAsync(model);
+            var registerResult = await _userService.RegisterUserAsync(model);
 
             if (registerResult)
             {
@@ -36,13 +40,31 @@ namespace Chitter.WebAPI.Controllers
         [HttpGet, Route("{userID}")]
         public async Task<IActionResult> GetByID(int userID)
         {
-            var userInfo = await _service.GetUserByIDAsync(userID);
+            var userInfo = await _userService.GetUserByIDAsync(userID);
 
             if (userInfo is null)
             {
                 return NotFound();
             }
             return Ok(userInfo);
+        }
+
+        [HttpPost, Route("~/api/Token")]
+        public async Task<IActionResult> Token([FromBody] TokenRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var tokenResponse = await _tokenService.GetTokenAsync(request);
+
+            if (tokenResponse is null)
+            {
+                return BadRequest("Invalid username or password.");
+            }
+
+            return Ok(tokenResponse);
         }
     }
 }
