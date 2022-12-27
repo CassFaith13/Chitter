@@ -1,5 +1,6 @@
 using Chitter.Models.User;
 using Chitter.Services.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chitter.WebAPI.Controllers
@@ -31,6 +32,7 @@ namespace Chitter.WebAPI.Controllers
             return BadRequest("New Chitter user could NOT be created. Please try again.");
         }
 
+        [Authorize]
         [HttpGet, Route("{userID}")]
         public async Task<IActionResult> GetByID(int userID)
         {
