@@ -38,6 +38,27 @@ namespace Chitter.Services.User
         }
 
 
+        public async Task<UserInfo> GetUserByIDAsync(int userID)
+        {
+            var entity = await _context.Users.FindAsync(userID);
+
+            if (entity is null)
+            {
+                return null;
+            }
+
+            var userInfo = new UserInfo{
+                ID = entity.ID,
+                Email = entity.Email,
+                Username = entity.Username,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                DateCreated = entity.DateCreated
+            };
+
+            return userInfo;
+        }
+
         // Helper Methods
         private async Task<UserEntity> GetUserByEmailAsync(string email)
         {
