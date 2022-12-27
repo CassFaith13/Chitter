@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Chitter.Services\Chitter.Services.csproj" />
+    <ProjectReference Include="..\Chitter.Models\Chitter.Models.csproj" />
+    <ProjectReference Include="..\Chitter.Data\Chitter.Data.csproj" />
+  </ItemGroup>
+
 </Project>
