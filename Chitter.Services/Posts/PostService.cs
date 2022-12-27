@@ -11,18 +11,18 @@ namespace Chitter.Services.Posts
     {
         private readonly int _userID;
         private readonly ApplicationDbContext _dbContext;
-        public PostService(IHttpContextAccessor httpContextAccessor, ApplicationDbContext dbContext)
+        public PostService(ApplicationDbContext dbContext)
         {   
-            var userClaims = httpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
+            // var userClaims = httpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
 
-            var value = userClaims.FindFirst("ID")?.Value;
+            // var value = userClaims.FindFirst("ID")?.Value;
 
-            var validID = int.TryParse(value, out _userID);
+            // var validID = int.TryParse(value, out _userID);
 
-            if (!validID)
-            {
-                throw new Exception("Attempted to build NoteService without User ID claim.");
-            }
+            // if (!validID)
+            // {
+            //     throw new Exception("Attempted to build PostService without User ID claim.");
+            // }
 
             _dbContext = dbContext;
         }

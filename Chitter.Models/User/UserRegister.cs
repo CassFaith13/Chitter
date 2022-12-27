@@ -4,6 +4,8 @@ namespace Chitter.Models.User
 {
     public class UserRegister
     {
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         [Required]
         [EmailAddress]
         public string? Email { get; set; }
