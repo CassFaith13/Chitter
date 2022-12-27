@@ -30,5 +30,17 @@ namespace Chitter.WebAPI.Controllers
             }
             return BadRequest("New Chitter user could NOT be created. Please try again.");
         }
+
+        [HttpGet, Route("{userID}")]
+        public async Task<IActionResult> GetByID(int userID)
+        {
+            var userInfo = await _service.GetUserByIDAsync(userID);
+
+            if (userInfo is null)
+            {
+                return NotFound();
+            }
+            return Ok(userInfo);
+        }
     }
 }
