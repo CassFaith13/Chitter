@@ -9,6 +9,7 @@ namespace Chitter.Data.Entities
         public string? Title { get; set; }
         [Required]
         public string? Content { get; set; }
+        public int OwnerID { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
         // virtual list comments

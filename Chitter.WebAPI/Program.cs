@@ -1,5 +1,6 @@
 using System.Text;
 using Chitter.Data;
+using Chitter.Services.Posts;
 using Chitter.Services.Token;
 using Chitter.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,6 +22,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 // Add User Service/Interface for Dependency Injection
 builder.Services.AddScoped<IUserService, UserService>();
+
+// Add Post Service/Interface for Dependency Injection
+builder.Services.AddScoped<IPostService, PostService>();
 
 // Add Token Service/Interface for Dependency Injection
 builder.Services.AddScoped<ITokenService, TokenService>();
