@@ -8,7 +8,9 @@ namespace Chitter.Data.Entities
         public int ID { get; set; }
         public string? Title { get; set; }
         [Required]
-        public string? Text { get; set; }
+        public string? Content { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         // virtual list comments
         public List<CommentEntity> Comments { get; set; }
         // virtual list likes
