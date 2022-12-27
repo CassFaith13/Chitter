@@ -1,4 +1,5 @@
 using Chitter.Data;
+using Chitter.Services.User;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,9 @@ builder.Services.AddSwaggerGen();
 
 // Add Connection String
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add User Service/Interface for Dependency Injection
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
