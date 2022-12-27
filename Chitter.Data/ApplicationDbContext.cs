@@ -1,3 +1,4 @@
+using Chitter.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chitter.Data
@@ -7,5 +8,7 @@ namespace Chitter.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public DbSet<UserEntity> Users { get; set; }
     }
 }
