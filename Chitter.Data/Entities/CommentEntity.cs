@@ -10,7 +10,7 @@ namespace Chitter.Data.Entities
         [Required]
         public string? Text { get; set; }
         public Guid AuthorID { get; set; }
-        public List<ReplyEntity> Replies { get; set; }
+        public virtual ICollection<ReplyEntity> Replies { get; } = new List<ReplyEntity>();
         [ForeignKey(nameof(ID))]
         public virtual ICollection<PostEntity> Posts { get; } = new List<PostEntity>();
     }

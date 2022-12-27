@@ -1,11 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Chitter.Models.Comment
+namespace Chitter.Models.Reply
 {
-    public class CommentUpdate
+    public class ReplyCreate
     {
-        [Required]
-        public int ID { get; set; }
         [Required]
         [MaxLength(250, ErrorMessage = "{0} must contain no more than {1} characters.")]
         public string? Text { get; set; }

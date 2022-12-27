@@ -10,5 +10,6 @@ namespace Chitter.Data.Entities
         [ForeignKey(nameof(ID))]
         public virtual ICollection<PostEntity> Posts { get; } = new List<PostEntity>();
         public Guid OwnerID { get; set; }
+        public bool IsLike { get; set; }
     }
 }

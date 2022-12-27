@@ -13,9 +13,9 @@ namespace Chitter.Data.Entities
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
         // virtual list comments
-        public List<CommentEntity> Comments { get; set; }
+        public virtual ICollection<CommentEntity> Comments { get; } = new List<CommentEntity>();
         // virtual list likes
-        public List<LikeEntity> Likes { get; set; }
+        public virtual  ICollection<LikeEntity> Likes { get; } = new List<LikeEntity>();
         public Guid AuthorID { get; set; }
     }
 }

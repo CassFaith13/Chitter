@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Chitter.Models.Comment
+namespace Chitter.Models.Reply
 {
-    public class CommentUpdate
+    public class ReplyUpdate
     {
         [Required]
         public int ID { get; set; }

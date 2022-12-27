@@ -1,6 +1,6 @@
-namespace Chitter.Models.Comment
+namespace Chitter.Models.Reply
 {
-    public class CommentInfo
+    public class ReplyInfo
     {
         public int ID { get; set; }
         public string? Text { get; set; }
